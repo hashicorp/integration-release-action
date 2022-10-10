@@ -1,7 +1,10 @@
 name: Integration Release Action
 description: Releases a new version of an integration for a HashiCorp product
 runs:
-  main: 'notify-release.sh'
+  using: 'composite'
+  steps:
+    - run: notify-release.sh
+      shell: bash
 inputs:
   github_token:
     description: 'A GitHub Token to validate the release notification is coming from the registered repository'
