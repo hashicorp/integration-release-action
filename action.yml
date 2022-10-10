@@ -1,14 +1,5 @@
 name: Integration Release Action
 description: Releases a new version of an integration for a HashiCorp product
-runs:
-  using: 'composite'
-  steps:
-    - run: pwd
-      shell: bash
-    - run: ls
-      shell: bash
-    - run: ./notify-release.sh
-      shell: bash
 inputs:
   github_token:
     description: 'A GitHub Token to validate the release notification is coming from the registered repository'
@@ -22,3 +13,11 @@ inputs:
   release_sha:
     description: 'The git SHA pointing to the commit of the release'
     required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.integration_identifier }}
+    - ${{ inputs.release_version }}
+    - ${{ inputs.release_sha }}

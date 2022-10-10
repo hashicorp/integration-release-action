@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Inputs
+INPUT_GITHUB_TOKEN="$1"
+INPUT_INTEGRATION_IDENTIFIER="$2"
+INPUT_RELEASE_VERSION="$3"
+INPUT_RELEASE_SHA="$4"
+
 # Config
 BASE_URL="https://5nw9rm117f.execute-api.us-east-1.amazonaws.com"
 
