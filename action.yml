@@ -3,7 +3,11 @@ description: Releases a new version of an integration for a HashiCorp product
 runs:
   using: 'composite'
   steps:
-    - run: notify-release.sh
+    - run: pwd
+      shell: bash
+    - run: ls
+      shell: bash
+    - run: ./notify-release.sh
       shell: bash
 inputs:
   github_token:
