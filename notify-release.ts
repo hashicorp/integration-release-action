@@ -35,14 +35,12 @@ export async function main() {
     baseURL
   );
 
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `Bearer ${githubToken}`);
-
   const result = await fetch(url.toString(), {
     method: "POST",
-    // @ts-expect-error: This is valid fetch usage
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${githubToken}`,
+    },
     body: JSON.stringify({
       version: releaseVersion,
       sha: releaseSha,
