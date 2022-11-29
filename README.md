@@ -1,6 +1,7 @@
 # Integration Release Action
 
-Todo
+This custom action notifies the HashiCorp `integration-api` that
+a release for the consuming integration repository has occurred.
 
 ## Inputs
 
@@ -31,14 +32,12 @@ jobs:
   notify-release:
     runs-on: ubuntu-latest
     steps:
-      # Checkout private repo
       - name: Checkout integration-release-action
         uses: actions/checkout@v2
         with:
           repository: hashicorp/integration-release-action
           path: ./integration-release-action
       - name: Notify Release
-        # reference the path from above
         uses: ./integration-release-action
         with:
           integration_identifier: "waypoint/brandoncorp-waypoint-plugin"
