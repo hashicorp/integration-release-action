@@ -37,7 +37,6 @@ jobs:
         with:
           repository: hashicorp/integration-release-action
           path: ./integration-release-action
-          token: ${{ secrets.PAT_WITH_READ_ACCESS }}
       - name: Notify Release
         # reference the path from above
         uses: ./integration-release-action
