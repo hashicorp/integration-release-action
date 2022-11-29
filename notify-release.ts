@@ -5,8 +5,8 @@ const fetch = createFetch(fetchImpl);
 import * as core from "@actions/core";
 
 const URLS = {
-  production: "https://wg5pym9sch.us-east-1.awsapprunner.com/",
-  staging: "https://uvvuveeuha.us-east-1.awsapprunner.com/",
+  production: "https://wg5pym9sch.us-east-1.awsapprunner.com",
+  staging: "https://uvvuveeuha.us-east-1.awsapprunner.com",
 };
 
 export async function main() {
