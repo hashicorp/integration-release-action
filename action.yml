@@ -1,23 +1,18 @@
 name: Integration Release Action
 description: Releases a new version of an integration for a HashiCorp product
+runs:
+  using: "node16"
+  main: "dist/index.js"
 inputs:
   github_token:
-    description: 'A GitHub Token to validate the release notification is coming from the registered repository'
+    description: "A GitHub Token to validate the release notification is coming from the registered repository"
     required: true
   integration_identifier:
     description: 'The identifier of the integration (e.g. "waypoint/nomad-plugin")'
     required: true
   release_version:
-    description: 'The version of the release to make'
+    description: "The version of the release to make"
     required: true
   release_sha:
-    description: 'The git SHA pointing to the commit of the release'
+    description: "The git SHA pointing to the commit of the release"
     required: true
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.github_token }}
-    - ${{ inputs.integration_identifier }}
-    - ${{ inputs.release_version }}
-    - ${{ inputs.release_sha }}

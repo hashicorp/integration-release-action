@@ -1,0 +1,32 @@
+{
+  "name": "integration-release-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.ts -o dist --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashicorp/integration-release-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hashicorp/integration-release-action/issues"
+  },
+  "homepage": "https://github.com/hashicorp/integration-release-action#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@vercel/ncc": "^0.34.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@vercel/fetch": "^6.2.0",
+    "node-fetch": "^2.6.7"
+  }
+}
