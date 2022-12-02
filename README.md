@@ -35,9 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Checkout integration-release-action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: hashicorp/integration-release-action
           path: ./integration-release-action
@@ -66,9 +66,9 @@ jobs:
           # - add more integrations as needed. Limit 256
     steps:
       - name: Checkout this repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Checkout integration-release-action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: hashicorp/integration-release-action
           path: ./integration-release-action
