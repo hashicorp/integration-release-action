@@ -6,7 +6,7 @@ import LoadFilesystemIntegration from "@hashicorp/integrations-hcl";
 import { getApiBaseUrl } from "./get-api-base-url";
 
 export async function main() {
-  core.debug("[validate-hcl]: Running");
+  console.log("[validate-hcl]: Running");
   // action inputs
   const integrationIdentifier = core.getInput("integration_identifier", {
     required: true,
@@ -30,6 +30,6 @@ export async function main() {
     version: releaseVersion,
   });
 
-  core.debug(JSON.stringify(fsIntegration, null, 2));
-  core.debug("[validate-hcl]: Finished");
+  console.log(JSON.stringify(fsIntegration, null, 2));
+  console.log("[validate-hcl]: Finished");
 }

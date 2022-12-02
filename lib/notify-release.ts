@@ -7,7 +7,7 @@ import { getApiBaseUrl } from "./get-api-base-url";
 import * as core from "@actions/core";
 
 export async function main() {
-  core.debug("[notify-release]: Running");
+  console.log("[notify-release]: Running");
   // action inputs
   const githubToken = core.getInput("github_token", { required: true });
   const integrationIdentifier = core.getInput("integration_identifier", {
@@ -40,10 +40,10 @@ export async function main() {
   if (result.status < 300) {
     core.info("Successfully notified release");
   } else {
-    core.error(
+    core.setFailed(
       `Failed to notify release: API responded with [${result.status}]`
     );
   }
 
-  core.debug("[notify-release]: Finished");
+  console.log("[notify-release]: Finished");
 }
