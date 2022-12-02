@@ -7,7 +7,7 @@ import { getApiBaseUrl } from "./get-api-base-url";
 import * as core from "@actions/core";
 
 export async function main() {
-  console.log("[notify-release]: Running");
+  core.info("[notify-release]: Running");
   // action inputs
   const githubToken = core.getInput("github_token", { required: true });
   const integrationIdentifier = core.getInput("integration_identifier", {
@@ -45,5 +45,5 @@ export async function main() {
     );
   }
 
-  console.log("[notify-release]: Finished");
+  core.info("[notify-release]: Finished");
 }

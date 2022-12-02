@@ -34,6 +34,8 @@ jobs:
   notify-release:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
       - name: Checkout integration-release-action
         uses: actions/checkout@v2
         with:
@@ -59,10 +61,12 @@ jobs:
     strategy:
       matrix:
         integration_identifier:
-          - 'vault/first-plugin'
-          - 'vault/second-plugin'
+          - "vault/first-plugin"
+          - "vault/second-plugin"
           # - add more integrations as needed. Limit 256
     steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v2
       - name: Checkout integration-release-action
         uses: actions/checkout@v2
         with:

@@ -6,7 +6,8 @@ import LoadFilesystemIntegration from "@hashicorp/integrations-hcl";
 import { getApiBaseUrl } from "./get-api-base-url";
 
 export async function main() {
-  console.log("[validate-hcl]: Running");
+  core.info("[validate-hcl]: Running");
+
   // action inputs
   const integrationIdentifier = core.getInput("integration_identifier", {
     required: true,
@@ -17,19 +18,14 @@ export async function main() {
   let repoPath = core.getInput("repo_path") || "";
   repoPath = path.join(process.env.GITHUB_WORKSPACE!, repoPath);
 
-  const baseUrl = getApiBaseUrl();
-
-  // TODO: Does this work?
-  // exporting this ENV VAR because LoadFilesystemIntegration
-  // internally depends on this.
-  process.env.INPUT_INTEGRATIONS_API_BASE_URL = baseUrl;
-
+  // exporting this ENV VAR because LoadFilesystemIntegration internally depends on this.
+  process.env.INPUT_INTEGRATIONS_API_BASE_URL = getApiBaseUrl();
   const fsIntegration = await LoadFilesystemIntegration({
     identifier: integrationIdentifier,
     repo_path: repoPath,
     version: releaseVersion,
   });
 
-  console.log(JSON.stringify(fsIntegration, null, 2));
-  console.log("[validate-hcl]: Finished");
+  core.info(JSON.stringify(fsIntegration, null, 2));
+  core.info("[validate-hcl]: Finished");
 }
