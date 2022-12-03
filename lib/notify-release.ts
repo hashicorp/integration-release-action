@@ -2,14 +2,12 @@ import createFetch from "@vercel/fetch";
 import * as fetchImpl from "node-fetch";
 const fetch = createFetch(fetchImpl);
 
+import { getApiBaseUrl } from "./get-api-base-url";
+
 import * as core from "@actions/core";
 
-const URLS = {
-  production: "https://wg5pym9sch.us-east-1.awsapprunner.com",
-  staging: "https://uvvuveeuha.us-east-1.awsapprunner.com",
-};
-
 export async function main() {
+  core.info("[notify-release]: Running");
   // action inputs
   const githubToken = core.getInput("github_token", { required: true });
   const integrationIdentifier = core.getInput("integration_identifier", {
@@ -18,21 +16,13 @@ export async function main() {
   const releaseVersion = core.getInput("release_version", { required: true });
   const releaseSha = core.getInput("release_sha", { required: true });
 
-  // default to production; override with:
-  // ```
-  // env:
-  //   ENVIRONMENT: staging
-  // ```
-  const env =
-    (process.env.ENVIRONMENT as "production" | "staging") || "production";
-  const baseURL = URLS[env];
-
   // parse slugs from identifier
   const [productSlug, integrationSlug] = integrationIdentifier.split("/");
 
+  // [POST] /products/:product/integrations/:integration/notify-release
   const url = new URL(
     `products/${productSlug}/integrations/${integrationSlug}/notify-release`,
-    baseURL
+    getApiBaseUrl()
   );
 
   const result = await fetch(url.toString(), {
@@ -50,8 +40,10 @@ export async function main() {
   if (result.status < 300) {
     core.info("Successfully notified release");
   } else {
-    core.error(
+    core.setFailed(
       `Failed to notify release: API responded with [${result.status}]`
     );
   }
+
+  core.info("[notify-release]: Finished");
 }

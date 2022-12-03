@@ -16,3 +16,6 @@ inputs:
   release_sha:
     description: "The git SHA pointing to the commit of the release"
     required: true
+  repo_path:
+    description: 'A path relative to `GITHUB_WORKSPACE` where the consuming integration repository code lives. Defaults to `""`'
+    required: false
