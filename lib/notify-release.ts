@@ -16,12 +16,16 @@ export async function main() {
   const releaseVersion = core.getInput("release_version", { required: true });
   const releaseSha = core.getInput("release_sha", { required: true });
 
+  // This env var is set by GitHub Actions
+  const repo = process.env.GITHUB_REPOSITORY;
+  const orgSlug = repo?.split("/")[0];
+
   // parse slugs from identifier
   const [productSlug, integrationSlug] = integrationIdentifier.split("/");
 
   // [POST] /products/:product/integrations/:integration/notify-release
   const url = new URL(
-    `products/${productSlug}/integrations/${integrationSlug}/notify-release`,
+    `products/${productSlug}/organizations/${orgSlug}/integrations/${integrationSlug}/notify-release`,
     getApiBaseUrl()
   );
 
