@@ -8,7 +8,7 @@ inputs:
     description: "A GitHub Token to validate the release notification is coming from the registered repository"
     required: true
   integration_identifier:
-    description: 'The identifier of the integration (e.g. "waypoint/nomad-plugin")'
+    description: 'The identifier of the integration (e.g. "waypoint/hashicorp/nomad-plugin")'
     required: true
   release_version:
     description: "The version of the release to make"
@@ -18,7 +18,4 @@ inputs:
     required: true
   repo_path:
     description: 'A path relative to `GITHUB_WORKSPACE` where the consuming integration repository code lives. Defaults to `""`'
-    required: false
-  repo:
-    description: "The repository where the integration lives. Defaults to `GITHUB_REPOSITORY`"
     required: false

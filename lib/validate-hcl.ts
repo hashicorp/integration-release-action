@@ -18,10 +18,6 @@ export async function main() {
   let repoPath = core.getInput("repo_path", {}) || "";
   repoPath = path.join(process.env.GITHUB_WORKSPACE!, repoPath);
 
-  // This env var is set by GitHub Actions
-  let repo = process.env.GITHUB_REPOSITORY;
-  let orgSlug = repo?.split("/")[0];
-
   // exporting this ENV VAR because LoadFilesystemIntegration internally depends on this.
   process.env.INPUT_INTEGRATIONS_API_BASE_URL = getApiBaseUrl();
   try {
@@ -29,7 +25,6 @@ export async function main() {
       identifier: integrationIdentifier,
       repo_path: repoPath,
       version: releaseVersion,
-      organization_id: orgSlug,
     });
 
     core.info(JSON.stringify(fsIntegration, null, 2));
