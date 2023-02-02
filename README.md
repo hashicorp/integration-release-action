@@ -44,7 +44,7 @@ jobs:
       - name: Notify Release
         uses: ./integration-release-action
         with:
-          integration_identifier: "waypoint/brandoncorp-waypoint-plugin"
+          integration_identifier: "waypoint/hashicorp/brandoncorp-waypoint-plugin"
           release_version: ${{ github.ref_name }}
           release_sha: ${{ github.ref }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -61,8 +61,8 @@ jobs:
     strategy:
       matrix:
         integration_identifier:
-          - "vault/first-plugin"
-          - "vault/second-plugin"
+          - "vault/hashicorp/first-plugin"
+          - "vault/hashicorp/second-plugin"
           # - add more integrations as needed. Limit 256
     steps:
       - name: Checkout this repo

@@ -17,11 +17,12 @@ export async function main() {
   const releaseSha = core.getInput("release_sha", { required: true });
 
   // parse slugs from identifier
-  const [productSlug, integrationSlug] = integrationIdentifier.split("/");
+  const [productSlug, orgSlug, integrationSlug] =
+    integrationIdentifier.split("/");
 
-  // [POST] /products/:product/integrations/:integration/notify-release
+  // [POST] /products/:product/organizations/:organization/integrations/:integration/notify-release
   const url = new URL(
-    `products/${productSlug}/integrations/${integrationSlug}/notify-release`,
+    `products/${productSlug}/organizations/${orgSlug}/integrations/${integrationSlug}/notify-release`,
     getApiBaseUrl()
   );
 
