@@ -9,6 +9,8 @@ a release for the consuming integration repository has occurred.
 
 **Required**
 
+We recommend using a repository's default `GITHUB_TOKEN`, which are [read-only](https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/) by default.
+
 ### `integration_identifier`
 
 **Required**
