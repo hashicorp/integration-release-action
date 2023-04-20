@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { main as notifyRelease } from "./lib/notify-release";
 import { main as validateHcl } from "./lib/validate-hcl";
 
