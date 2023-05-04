@@ -18,6 +18,9 @@ export async function main() {
   const integrationIdentifier = core.getInput("integration_identifier", {
     required: true,
   });
+  const integrationStrategy = core.getInput("integration_strategy", {
+    required: false,
+  });
   const releaseVersion = core.getInput("release_version", { required: true });
   const releaseSha = core.getInput("release_sha", { required: true });
 
@@ -40,6 +43,7 @@ export async function main() {
     body: JSON.stringify({
       version: releaseVersion,
       sha: releaseSha,
+      strategy: integrationStrategy,
     }),
   });
 
