@@ -33,10 +33,7 @@ export async function main() {
       identifier: integrationIdentifier,
       repo_path: repoPath,
       version: releaseVersion,
-      // @ts-ignore strategy expects an enumerated value
-      // we will provide one of those values here, and if not the code
-      // fails-safe and uses the default strategy if passed a bad value
-      strategy: integrationStrategy,
+      strategy: integrationStrategy as "default" | "nomad-pack" | undefined,
     });
 
     core.info(JSON.stringify(fsIntegration, null, 2));
