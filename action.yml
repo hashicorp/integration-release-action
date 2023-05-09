@@ -22,3 +22,6 @@ inputs:
   repo_path:
     description: 'A path relative to `GITHUB_WORKSPACE` where the consuming integration repository code lives. Defaults to `""`'
     required: false
+  strategy:
+    description: "This specifies the consumption strategy, for exceptional scenarios where the integration interface differs from the default interface."
+    required: false

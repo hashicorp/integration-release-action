@@ -17,6 +17,9 @@ export async function main() {
   const integrationIdentifier = core.getInput("integration_identifier", {
     required: true,
   });
+  const integrationStrategy = core.getInput("integration_strategy", {
+    required: false,
+  });
   const releaseVersion = core.getInput("release_version", { required: true });
 
   // by default, assume the repo will be checked out under $GITHUB_WORKSPACE
@@ -30,6 +33,7 @@ export async function main() {
       identifier: integrationIdentifier,
       repo_path: repoPath,
       version: releaseVersion,
+      strategy: integrationStrategy as "default" | "nomad-pack" | undefined,
     });
 
     core.info(JSON.stringify(fsIntegration, null, 2));

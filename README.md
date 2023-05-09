@@ -23,6 +23,12 @@ We recommend using a repository's default `GITHUB_TOKEN`, which are [read-only](
 
 **Required**
 
+### `integration_strategy`
+
+**Optional**
+
+This specifies the consumption strategy, for exceptional scenarios where the integration interface differs from what is specified in https://github.com/hashicorp/integration-template. This is a parameter you will not need to use to configure your notify-release-action, and is a parameter that is used internally by project members to handle edge cases.
+
 ## Outputs
 
 None
