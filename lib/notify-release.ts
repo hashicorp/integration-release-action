@@ -50,9 +50,8 @@ export async function main() {
   if (result.status < 300) {
     core.info("Successfully notified release");
   } else {
-    core.error(await result.text());
     core.setFailed(
-      `Failed to notify release: API responded with [${result.status}]}`
+      `Failed to notify release: API responded with [${result.status}]}\n${await result.text()}`
     );
   }
 
